@@ -12,7 +12,7 @@ Each new design you create must be saved as a pair of .gh and .3dm files. (Or, i
 Keep the Rhino window visible while working through these steps. When using the solver, keep the GH window visible at the edge of the screen, showing the Parameters section (step 5). Any screenshots taken will retain this info, and models will be easier to re-create later.
 
 
-![alt_text](images/image1.png "image_tooltip")
+![alt_text](images/image01.png "image_tooltip")
 
 
 Model in relaxed position with all parameters visible for future reference.
@@ -27,7 +27,7 @@ This sets the dimensions of the rectangular surfaces that represent a woven fabr
 There are 2 parallel surfaces: Layer 0 (red) and Layer 1 (blue). These steps assume a 2-layer design, but the tool also supports single-layer designs. See the **Note on single-layer designs** at the end.
 
 
-![alt_text](images/image2.png "image_tooltip")
+![alt_text](images/image02.png "image_tooltip")
 
 
 "Extent X" = width (weft direction).
@@ -62,15 +62,13 @@ This step also includes a "Join at edges?" toggle that is False by default.
 Right-click on a Geometry component (eg. "Points to Exchange") and select "Set one Geometry" or "Set Multiple Geometries" from the dropdown menu. Click on your curve in Rhino to select (it will turn green), holding down Shift and clicking to select additional curves.
 
 
-![alt_text](images/image3.png "image_tooltip")
+![alt_text](images/image03.png "image_tooltip")
 
 
 A selection set can be inverted by double-clicking the boolean toggle next to it. For example, to select all points, select "Clear values" from the dropdown menu (the Geometry component will turn orange) and set the toggle to True.
 
 
-![alt_text](images/image4.png "image_tooltip")
-
-![alt_text](images/image5.png "image_tooltip")
+![alt_text](images/image04.png "image_tooltip")
 
 
 Before and after inverting a selection set.
@@ -83,7 +81,7 @@ This step is not necessary for all workflows, but may be helpful in experimental
 Each light-green relay contains a path mask that will produce the set of points defined in step 2. Each dark-green relay indicates the behavior of point pairs in that set. By default, the 3 selection sets are connected to their corresponding behaviors. Connecting them in a different order may modify the design's relaxed state.
 
 
-![alt_text](images/image6.png "image_tooltip")
+![alt_text](images/image05.png "image_tooltip")
 
 
 
@@ -96,9 +94,7 @@ To apply a filter, connect one of the blue Panel components to the Filter relay.
 In this file, tree item {A;B}[C] is the point on layer A, in column B and row C. Phrased another way, point (x,y,z) is tree item {z;x}[y].
 
 
-![alt_text](images/image7.png "image_tooltip")
-
-![alt_text](images/image8.png "image_tooltip")
+![alt_text](images/image06.png "image_tooltip")
 
 
 Left: "8 shaft satin" filter applied to a selection set, with border join set to True.
@@ -117,13 +113,13 @@ Each layer can be divided into "A" and "B" zones with distinct shrinkage and sti
 Right-click on the "Layer 0 A-Curves" component and set the geometry to one or more closed curves. Repeat with "Layer 1 A-Curves". Use the Invert toggle if needed.
 
 
-![alt_text](images/image9.png "image_tooltip")
+![alt_text](images/image07.png "image_tooltip")
 
 
 Magenta points indicate zone A on layer 0; non-magenta points indicate zone B. Layer 1 is marked in the same manner with cyan points. Zones may have multiple, discontinuous zones.
 
 
-![alt_text](images/image10.png "image_tooltip")
+![alt_text](images/image08.png "image_tooltip")
 
 
 All 4 point sets (join, exchange, 0-A, 1-A) can be independent of each other (as above), but in practice the same boundaries are often used for multiple regions to produce specific behaviors.
@@ -141,10 +137,7 @@ Shrinkage values, ranging from 0 to 1, indicate the proportion of its original l
 This may be used to model the effects of felting, heat-shrinking yarns or other woven techniques: for example, to model a seersucker fabric in which warp A is advanced at ½ the rate of warp B, enter 0.5 for warp shrinkage in zone A.
 
 
-![alt_text](images/image11.gif "image_tooltip")
-
-![alt_text](images/image12.gif "image_tooltip")
-
+![alt_text](images/image09.gif "image_tooltip")
 
 
 #### 4.2 Setting stiffness values
@@ -154,9 +147,7 @@ A stiffness value of 0 indicates that the area of fabric is soft and bends easil
 Unlike shrinkage, the stiffness parameter is not directly tied to measurements of fabric behavior - it's more of a qualitative description.
 
 
-![alt_text](images/image13.gif "image_tooltip")
-
-![alt_text](images/image14.gif "image_tooltip")
+![alt_text](images/image10.gif "image_tooltip")
 
 
 
@@ -169,15 +160,13 @@ Click any Swatch component to change its color.
 **Recommended**: Turn the preview on for grid lines (both layers) and point selection sets (the 4 groups with CMYK colors) when making design adjustments.
 
 
-![alt_text](images/image15.png "image_tooltip")
+![alt_text](images/image11.png "image_tooltip")
 
 
 The "Display points w/ offset?" slider moves each point set slightly, to improve visibility where they overlap. Adjust to your desired appearance.
 
 
-![alt_text](images/image16.png "image_tooltip")
-
-![alt_text](images/image17.png "image_tooltip")
+![alt_text](images/image12.png "image_tooltip")
 
 
 Left: 0-A and 1-A points are hidden when offset is set to 0. Right: Offset value of 0.25 is applied.
@@ -185,7 +174,7 @@ Left: 0-A and 1-A points are hidden when offset is set to 0. Right: Offset value
 **Important: Check the "Layer 0 surface" and "Layer 1 surface" toggles before moving on to step 6. **These should be set to False for quicker performance. If they are set to True, each NURBS surface will be re-calculated with each iteration of the solver, slowing down performance and potentially crashing for large grid sizes. 
 
 
-![alt_text](images/image18.png "image_tooltip")
+![alt_text](images/image13.png "image_tooltip")
 
 
 **Recommended workflow for quickest performance**: Start solver with surface toggles on False → Observe surfaces based on grid lines (Adjust as needed and repeat) → Pause solver → Set surface toggles to True.
@@ -196,7 +185,7 @@ Left: 0-A and 1-A points are hidden when offset is set to 0. Right: Offset value
 The two controls connected to the solver are a Reset button and a Running toggle (preset to False).
 
 
-![alt_text](images/image19.png "image_tooltip")
+![alt_text](images/image14.png "image_tooltip")
 
 
 When ready to start the solver, click the Reset button. The solver should also be reset each time changes are made to parameters (step 4) or geometry (steps 1-3).
@@ -230,7 +219,7 @@ Changes made to parameters (step 5) **will** update in real time, but may not be
 * This may need to be done each time the file is opened.
 
 
-![alt_text](images/image20.png "image_tooltip")
+![alt_text](images/image15.png "image_tooltip")
 
 
 
