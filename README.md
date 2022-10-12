@@ -12,13 +12,10 @@ Each new design you create must be saved as a pair of .gh and .3dm files. (Or, i
 Keep the Rhino window visible while working through these steps. When using the solver, keep the GH window visible at the edge of the screen, showing the Parameters section (step 5). Any screenshots taken will retain this info, and models will be easier to re-create later.
 
 
-![alt_text](images/image01.png "image_tooltip")
-
-
+<img src="images/image01.png" width=800><br>
 Model in relaxed position with all parameters visible for future reference.
 
 If the solver component turns red (indicating an error) and clicking Reset does not fix it, it's possible wires were inadvertently disconnected - reopen the last working version of your file and try again. 
-
 
 ### 1. Set grid size
 
@@ -26,18 +23,13 @@ This sets the dimensions of the rectangular surfaces that represent a woven fabr
 
 There are 2 parallel surfaces: Layer 0 (red) and Layer 1 (blue). These steps assume a 2-layer design, but the tool also supports single-layer designs. See the **Note on single-layer designs** at the end.
 
+<img src="images/image02.png" width=800>
 
-![alt_text](images/image02.png "image_tooltip")
-
-
-"Extent X" = width (weft direction).
-
-"Extent Y" = length (warp direction).
-
+"Extent X" = width (weft direction).  
+"Extent Y" = length (warp direction).  
 Larger grid sizes will run more slowly. The default size of 36x48 is good for sketching.
 
 For developing final designs, use a larger grid: the increased number of points on the grid allow each "yarn" to bend more times along its length, better approximating physical yarn behavior.
-
 
 ### 2. Select grid points to join or exchange
 
@@ -47,21 +39,16 @@ This step defines sets of grid points that will be joined or exchanged. Up to 3 
 
 Each selection set is connected to a unique behavior:
 
+* **Points to exchange**: the lower point in the pair will be moved above the upper point. This is comparable to exchanging layers in doubleweave.<br><br>
+<img src="images/image03.gif" width=800><br>
+Simplified example of exchanging layers. Points in the upper right and lower left quadrants were specified as points to exchange.  
 
+* **Points to join**: All point pairs in the selection set are joined. This is comparable to a tiedown in doubleweave.<br><br>
+<img src="images/image04.gif" width=800><br>
+Simplified example of joining layers. Points along the grid's midlines (marked with black dots) were specified as points to join.  
 
-* **Points to exchange**: the lower point in the pair will be moved above the upper point. This is comparable to exchanging layers in doubleweave.
-
-![alt_text](images/image03.gif "image_tooltip")
-Simplified example of exchanging layers. Points in the upper right and lower left quadrants were specified as points to exchange.
-
-* **Points to join**: All point pairs in the selection set are joined. This is comparable to a tiedown in doubleweave.
-
-![alt_text](images/image04.gif "image_tooltip")
-Simplified example of joining layers. Points along the grid's midlines (marked with black dots) were specified as points to join.
-
-* **Points to filter + join**: The selection set is first modified by a selected "filter" (see below). All point pairs in the _resulting_ set are joined.
+* **Points to filter + join**: The selection set is first modified by a selected "filter" (see below). All point pairs in the intersecting set are joined.<br><br>
 A filter is an optional modification of the selection set. It can be used to quickly change the density and pattern of joins within a large region or the entire surface.
-
 
 **Note**: Leaving some or all of the Geometry components empty is OK and will not affect the functionality of the solver. However, it's good to have some interaction between layers - otherwise you have 2 separate surfaces whose behaviors don't affect each other, not very interesting!
 
@@ -69,18 +56,12 @@ This step also includes a "Join at edges?" toggle that is False by default.
 
 Right-click on a Geometry component (eg. "Points to Exchange") and select "Set one Geometry" or "Set Multiple Geometries" from the dropdown menu. Click on your curve in Rhino to select (it will turn green), holding down Shift and clicking to select additional curves.
 
-
-![alt_text](images/image05.png "image_tooltip")
-
+<img src="images/image05.png" width=600>
 
 A selection set can be inverted by double-clicking the boolean toggle next to it. For example, to select all points, select "Clear values" from the dropdown menu (the Geometry component will turn orange) and set the toggle to True.
 
-
-![alt_text](images/image06.png "image_tooltip")
-
-
+<img src="images/image06.png" width=800><br>
 Before and after inverting a selection set.
-
 
 ### 2a. (Optional) Re-assign behaviors to selection sets
 
@@ -88,10 +69,7 @@ This step is not necessary for all workflows, but may be helpful in experimental
 
 Each light-green relay contains a path mask that will produce the set of points defined in step 2. Each dark-green relay indicates the behavior of point pairs in that set. By default, the 3 selection sets are connected to their corresponding behaviors. Connecting them in a different order may modify the design's relaxed state.
 
-
-![alt_text](images/image07.png "image_tooltip")
-
-
+<img src="images/image07a.png" width=300>
 
 ### 2b. (Optional) Apply a filter to joined points
 
@@ -101,16 +79,10 @@ To apply a filter, connect one of the blue Panel components to the Filter relay.
 
 In this file, tree item {A;B}[C] is the point on layer A, in column B and row C. Phrased another way, point (x,y,z) is tree item {z;x}[y].
 
-
-![alt_text](images/image08.png "image_tooltip")
-
-
-Left: "8 shaft satin" filter applied to a selection set, with border join set to True.
-
-Right: "10x10 checkerboard" _and_ "2x1 twill" filters applied to all points, with border join set to False. 
-
+<img src="images/image08.png" width=800><br>
+Left: "8 shaft satin" filter applied to a selection set, with border join set to True.  
+Right: "10x10 checkerboard" _and_ "2x1 twill" filters applied to all points, with border join set to False.  
 **Note**: connecting multiple filters to the relay (by holding down Shift) will combine them _before_ applying the filter to the selection set.
-
 
 ### 3. Define A/B zones for each layer
 
@@ -120,46 +92,25 @@ Each layer can be divided into "A" and "B" zones with distinct shrinkage and sti
 
 Right-click on the "Layer 0 A-Curves" component and set the geometry to one or more closed curves. Repeat with "Layer 1 A-Curves". Use the Invert toggle if needed.
 
-
-![alt_text](images/image09.png "image_tooltip")
-
-
+<img src="images/image09.png" width=800><br>
 Magenta points indicate zone A on layer 0; non-magenta points indicate zone B. Layer 1 is marked in the same manner with cyan points. Zones may have multiple, discontinuous zones.
 
-
-![alt_text](images/image10.png "image_tooltip")
-
-
+<img src="images/image10.png" width=400><br>
 All 4 point sets (join, exchange, 0-A, 1-A) can be independent of each other (as above), but in practice the same boundaries are often used for multiple regions to produce specific behaviors.
-
 
 ### 4. Set parameters for each zone
 
 The model contains 4 zones (0-A, 0-B, 1-A, 1-B), each of which can have unique values for weft shrinkage, warp shrinkage, weft stiffness and warp stiffness. Drag or double-click each number slider to set a value.
 
-
-#### 4.1 Setting shrinkage values
-
-Shrinkage values, ranging from 0 to 1, indicate the proportion of its original length that the area of fabric shrinks to when relaxed. 
-
-This may be used to model the effects of felting, heat-shrinking yarns or other woven techniques: for example, to model a seersucker fabric in which warp A is advanced at ½ the rate of warp B, enter 0.5 for warp shrinkage in zone A.
-
-
-![alt_text](images/image11.gif "image_tooltip")
+* **Shrinkage** values, ranging from 0 to 1, indicate the proportion of its original length that the area of fabric shrinks to when relaxed.<br><br>
+This may be used to model the effects of felting, heat-shrinking yarns or other woven techniques: for example, to model a seersucker fabric in which warp A is advanced at ½ the rate of warp B, enter 0.5 for warp shrinkage in zone A.<br><br>
+<img src="images/image11.gif" width=800><br>
 Simplified example of shrinkage params and their effects.
 
-
-#### 4.2 Setting stiffness values
-
-A stiffness value of 0 indicates that the area of fabric is soft and bends easily (eg. fabrics woven with cotton, wool); a value of 1 indicates that it resists bending (eg. fabrics woven with thick monofilament, paper yarn, wire). 
-
-Unlike shrinkage, the stiffness parameter is not directly tied to measurements of fabric behavior - it's more of a qualitative description.
-
-
-![alt_text](images/image12.gif "image_tooltip")
+* A **stiffness** value of 0 indicates that the area of fabric is soft and bends easily (eg. fabrics woven with cotton, wool); a value of 1 indicates that it resists bending (eg. fabrics woven with thick monofilament, paper yarn, wire).<br><br>
+Unlike shrinkage, the stiffness parameter is not directly tied to measurements of fabric behavior - it's more of a qualitative description.<br><br>
+<img src="images/image12.gif" width=800><br>
 Simplified example of stiffness params and their effects.
-
-
 
 ### 5. Set display options 
 
@@ -169,23 +120,16 @@ Click any Swatch component to change its color.
 
 **Recommended**: Turn the preview on for grid lines (both layers) and point selection sets (the 4 groups with CMYK colors) when making design adjustments.
 
-
-![alt_text](images/image13.png "image_tooltip")
-
+<img src="images/image13.png" width=550>
 
 The "Display points w/ offset?" slider moves each point set slightly, to improve visibility where they overlap. Adjust to your desired appearance.
 
-
-![alt_text](images/image14.png "image_tooltip")
-
-
+<img src="images/image14.png" width=800><br>
 Left: 0-A and 1-A points are hidden when offset is set to 0. Right: Offset value of 0.25 is applied.
 
-**Important: Check the "Layer 0 surface" and "Layer 1 surface" toggles before moving on to step 6. **These should be set to False for quicker performance. If they are set to True, each NURBS surface will be re-calculated with each iteration of the solver, slowing down performance and potentially crashing for large grid sizes. 
+**Important:** Check the "Layer 0 surface" and "Layer 1 surface" toggles before moving on to step 6. These should be set to False for quicker performance. If they are set to True, each NURBS surface will be re-calculated with each iteration of the solver, slowing down performance and potentially crashing for large grid sizes. 
 
-
-![alt_text](images/image15.png "image_tooltip")
-
+<img src="images/image15.png" width=350>
 
 **Recommended workflow for quickest performance**: Start solver with surface toggles on False → Observe surfaces based on grid lines (Adjust as needed and repeat) → Pause solver → Set surface toggles to True.
 
@@ -194,9 +138,7 @@ Left: 0-A and 1-A points are hidden when offset is set to 0. Right: Offset value
 
 The two controls connected to the solver are a Reset button and a Running toggle (preset to False).
 
-
-![alt_text](images/image16.png "image_tooltip")
-
+<img src="images/image16.png" width=250>
 
 When ready to start the solver, click the Reset button. The solver should also be reset each time changes are made to parameters (step 4) or geometry (steps 1-3).
 
@@ -212,26 +154,19 @@ Changes made to parameters (step 5) **will** update in real time, but may not be
 
 **Note on single-layer designs**: Follow steps 1-6 with a few modifications. For consistency, these notes assume that all single-layer designs utilize Layer 0 only.
 
-
-
 * Skip steps 2, 2a and 2b.
 * In step 3, leave the Layer 1 A-curves component empty.
 * In step 4, set all Layer 1 parameters to default values (shrinkage = 1, stiffness = 0).
 * In step 5, turn off visibility for all Layer 1 custom preview components.
 
-**Known issue with single-layer designs: **Some single-layer fabric designs fail to simulate properly when the cluster that controls layer joins is enabled (and some others fail when it's not enabled) An effective workaround is:
-
-
+**Known issue with single-layer designs:** Some single-layer fabric designs fail to simulate properly when the cluster that controls layer joins is enabled (and some others fail when it's not enabled) An effective workaround is:
 
 * Follow all steps with single-layer modifications and start solver as usual
 * Stop solver, reset, and disable the cluster that controls layer joins and exchanges
 * Reset and start the solver again, noting any changes in appearance
 * This may need to be done each time the file is opened.
 
-
-![alt_text](images/image17.png "image_tooltip")
-
-
+<img src="images/image17.png" width=800>
 
 ### Terms used:
 
