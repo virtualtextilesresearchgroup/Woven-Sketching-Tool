@@ -9,7 +9,7 @@ Each new design you create must be saved as a pair of .gh and .3dm files. (Or, i
 
 ### Tips
 
-Keep the Rhino window visible while working through these steps. When using the solver, keep the GH window visible at the edge of the screen, showing the Parameters section (step 5). Any screenshots taken will retain this info, and models will be easier to re-create later.
+Keep the Rhino window visible while working through these steps. When using the solver, keep the GH window visible at the edge of the screen, showing the Parameters section (step 5). Any screenshots taken will retain this info, and design iterations will be easier to re-create later.
 
 
 <img src="images/image01.png" width=800><br>
@@ -33,7 +33,7 @@ For developing final designs, use a larger grid: the increased number of points 
 
 ### 2. Select grid points to join or exchange
 
-This step defines sets of grid points that will be joined or exchanged. Up to 3 selection sets can be created, consisting of one or more closed curves drawn in Rhino. Draw with any Rhino tool that creates curves, or import vectors into your .3dm file.
+This step defines sets of grid points that will be joined or exchanged. Up to 3 selection sets can be created, consisting of one or more closed curves drawn in Rhino. Draw with any Rhino tool that creates curves, import vectors into your .3dm file, or generate them with Grasshopper components.
 
 **Note**: Curves don't need to be planar. Points will be considered inside or outside a curve based on its projection along the z-axis onto the grid. FYI, "on" is "in".
 
@@ -54,9 +54,11 @@ A filter is an optional modification of the selection set. It can be used to qui
 
 This step also includes a "Join at edges?" toggle that is False by default.
 
-Right-click on a Geometry component (eg. "Points to Exchange") and select "Set one Geometry" or "Set Multiple Geometries" from the dropdown menu. Click on your curve in Rhino to select (it will turn green), holding down Shift and clicking to select additional curves.
+**If your curves are drawn, imported or baked in Rhino:** Right-click on a Geometry component (eg. "Points to Exchange") and select "Set one Geometry" or "Set Multiple Geometries" from the dropdown menu. Click on your curve in Rhino to select (it will turn green), holding down Shift and clicking to select additional curves.
 
 <img src="images/image05.png" width=600>
+
+**If your curves are generated in Grasshopper:** Connect them to the input of a Geometry component. Hold down Shift while connecting to add multiple inputs.
 
 A selection set can be inverted by double-clicking the boolean toggle next to it. For example, to select all points, select "Clear values" from the dropdown menu (the Geometry component will turn orange) and set the toggle to True.
 
