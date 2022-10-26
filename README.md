@@ -33,9 +33,9 @@ For developing final designs, use a larger grid: the increased number of points 
 
 ### 2. Select grid points to join or exchange
 
-This step defines sets of grid points that will be joined or exchanged. Up to 3 selection sets can be created, consisting of one or more closed curves drawn in Rhino. Draw with any Rhino tool that creates curves, import vectors into your .3dm file, or generate them with Grasshopper components.
+This step defines sets of grid points that will be joined or exchanged. Up to 3 selection sets can be created, consisting of one or more closed curves. Draw with any Rhino tool that creates curves, import vectors into your .3dm file, or generate them with Grasshopper components.
 
-**Note**: Curves don't need to be planar. Points will be considered inside or outside a curve based on its projection along the z-axis onto the grid. FYI, "on" is "in".
+**Note**: Curves don't need to be planar. Points will be considered inside or outside a curve based on its projection onto the XY plane. FYI, "on" is "in".
 
 Each selection set is connected to a unique behavior:
 
