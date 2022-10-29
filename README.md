@@ -170,6 +170,14 @@ Changes made to parameters (step 5) **will** update in real time, but may not be
 
 <img src="images/image17.png" width=800>
 
+### 7. Show color mapping
+
+These components aren't connected to the Kangaroo solver - they take inputs from the curves in steps 2 and 3 and create a color-coded diagram of the zoned surfaces. To display the diagram, double-click the "Show color mapping?" toggle to set it to True. You can also set "Show color palette?" to True for an explanation of each color.
+
+<img src="images/image18.png" width=800>
+
+**Note:** these components occasionally return unexpected results when very complex or compound geometry is used (eg. concentric or nested curves), due to limitations of the Region boolean components in Grasshopper. Take a moment for a "reality check" before using your diagram as a weave graphic or input for another fabrication process.
+
 ### Terms used:
 
 **Exchange** - referring to a pair of points. The lower-layer point is moved above the upper-layer point when the solver starts. Similar to exchanging layers of doubleweave.
