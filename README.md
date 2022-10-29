@@ -2,7 +2,7 @@
 
 This tool was created to support the design and ideation of self-shaping woven fabrics by quickly simulating surface relaxation. It can also be used as a design tool for non-textile materials, or simply for exploring the effects of differential shrinkage.
 
-You'll need an up-to-date version of Rhino. To get started, open Woven Sketching v3.3dm, launch Grasshopper and open Woven Sketching v3.gh.
+You'll need an up-to-date version of Rhino. To get started, open Woven Sketching Demo.3dm, launch Grasshopper and open Woven Sketching Tool.gh.
 
 Each new design you create must be saved as a pair of .gh and .3dm files. (Or, if you prefer, create one .3dm file and many .gh files that reference it, as in the Sample Files folder.)
 
