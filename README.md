@@ -56,7 +56,7 @@ This step also includes a "Join at edges?" toggle that is False by default.
 
 **If your curves are drawn, imported or baked in Rhino:** Right-click on a Geometry component (eg. "Points to Exchange") and select "Set one Geometry" or "Set Multiple Geometries" from the dropdown menu. Click on your curve in Rhino to select (it will turn green), holding down Shift and clicking to select additional curves.
 
-<img src="images/image05.png" width=600>
+<img src="images/image05.png" width=300>
 
 **If your curves are generated in Grasshopper:** Connect them to the input of a Geometry component. Hold down Shift while connecting to add multiple inputs.
 
