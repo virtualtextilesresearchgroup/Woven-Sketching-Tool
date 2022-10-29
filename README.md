@@ -71,7 +71,7 @@ This step is not necessary for all workflows, but may be helpful in experimental
 
 Each light-green relay contains a path mask that will produce the set of points defined in step 2. Each dark-green relay indicates the behavior of point pairs in that set. By default, the 3 selection sets are connected to their corresponding behaviors. Connecting them in a different order may modify the design's relaxed state.
 
-<img src="images/image07a.png" width=300>
+<img src="images/image07.png" width=600>
 
 ### 2b. (Optional) Apply a filter to joined points
 
